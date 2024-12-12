@@ -53,6 +53,7 @@ body {
     width: 90vw;
     /* A largura da imagem deve ser igual à largura do carrossel */
     height: fit-content;
+    object-fit: cover;
 }
 
 .prev,
