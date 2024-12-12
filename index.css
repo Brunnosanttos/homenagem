@@ -50,11 +50,12 @@ body {
 }
 
 .carousel-inner img {
-    width: 90vw;
-    /* A largura da imagem deve ser igual à largura do carrossel */
-    height: fit-content;
-    object-fit: cover;
+    width: 100%; /* Preenche toda a largura do carrossel */
+    height: auto; /* Ajusta a altura proporcionalmente */
+    max-height: 70vh; /* Limita a altura máxima a 70% da viewport */
+    object-fit: cover; /* Garante que a imagem se ajuste ao espaço sem distorcer */
 }
+
 
 .prev,
 .next {
@@ -159,9 +160,9 @@ h1 {
 
 @media (max-width: 768px) {
     .carousel-inner img {
-        height: 70vh;
-        /* Define a altura como 70% da altura da viewport */
-        object-fit: cover;
-        /* Garante que a imagem mantenha uma proporção agradável */
+        width: 100%; /* Largura total do carrossel */
+        height: auto; /* Altura ajustada proporcionalmente */
+        max-height: 70vh; /* Altura máxima */
+        object-fit: contain; /* Ajusta a imagem sem cortar conteúdo */
     }
 }
