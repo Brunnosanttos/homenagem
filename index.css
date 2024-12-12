@@ -1,0 +1,156 @@
+/* Centraliza o conteúdo da página */
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    background-color: #383535;
+    /* Cor de fundo para contraste */
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.top {
+    text-align: center;
+    color: #c445a2;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Ajuste para o carrossel */
+.carousel {
+    width: 90vw;
+    /* Largura fixa do carrossel */
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+    /* Fundo branco para o carrossel */
+    border-radius: 8px;
+    /* Bordas arredondadas (opcional) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra (opcional) */
+}
+
+.carousel {
+    width: 90vw;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-inner img {
+    width: 90vw;
+    /* A largura da imagem deve ser igual à largura do carrossel */
+    height: fit-content;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carousel-indicators {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel-indicators li.active {
+    background-color: #333;
+}
+
+.bottom {
+    text-align: center;
+    color: #c445a2;
+    padding: 20px;
+    font-size: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.contador {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.bloco {
+    background-color: #1c1a1a;
+    /* Fundo branco para contraste */
+    padding: 20px;
+    border-radius: 8px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra */
+}
+
+.numero {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.label {
+    margin-top: 5px;
+    font-size: 1rem;
+    color: #aaa;
+}
+
+@keyframes fall {
+    0% {
+      transform: translateY(0); /* Começa no ponto inicial definido no JavaScript */
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh); /* Finaliza uma viewport abaixo do topo atual */
+      opacity: 0;
+    }
+  }
+  
+  .emoji {
+    position: absolute;
+    font-size: 2rem;
+    animation: fall linear infinite;
+  }
+  
+  
