@@ -160,7 +160,7 @@ h1 {
 
 @media (max-width: 768px) {
     .carousel-inner img {
-        width: 90vw; /* Largura total do carrossel */
+        width: 100vw; /* Largura total do carrossel */
         height: auto; /* Altura ajustada proporcionalmente */
         max-height: 90vh; /* Altura máxima */
         object-fit: contain; /* Ajusta a imagem sem cortar conteúdo */
