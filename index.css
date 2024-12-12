@@ -50,7 +50,7 @@ body {
 }
 
 .carousel-inner img {
-    width: 90vw; /* Preenche toda a largura do carrossel */
+    width: 100vw; 
     height: auto; /* Ajusta a altura proporcionalmente */
     max-height: 70vh; /* Limita a altura máxima a 70% da viewport */
     object-fit: cover; /* Garante que a imagem se ajuste ao espaço sem distorcer */
