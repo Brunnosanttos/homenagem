@@ -59,18 +59,51 @@ const restartAutoSlide = () => {
 updateCarousel();
 startAutoSlide();
 
-const dataInicial = new Date("2024-10-21T22:00:00"); // Altere para a data de início do relacionamento
+const dataInicial = new Date("2024-10-22T22:00:00"); // Data de início do relacionamento
 
 function atualizarContador() {
   const agora = new Date();
-  const diferenca = agora - dataInicial;
+  
+  // Ajusta para o mesmo horário da data inicial
+  agora.setSeconds(0, 0);
 
-  const anos = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
-  const meses = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
-  const dias = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+  let anos = agora.getFullYear() - dataInicial.getFullYear();
+  let meses = agora.getMonth() - dataInicial.getMonth();
+  let dias = agora.getDate() - dataInicial.getDate();
+  let horas = agora.getHours() - dataInicial.getHours();
+  let minutos = agora.getMinutes() - dataInicial.getMinutes();
+  let segundos = agora.getSeconds() - dataInicial.getSeconds();
+
+  // Ajusta os valores se houver "empréstimos" necessários
+  if (segundos < 0) {
+    segundos += 60;
+    minutos -= 1;
+  }
+
+  if (minutos < 0) {
+    minutos += 60;
+    horas -= 1;
+  }
+
+  if (horas < 0) {
+    horas += 24;
+    dias -= 1;
+  }
+
+  if (dias < 0) {
+    const ultimoDiaMesAnterior = new Date(
+      agora.getFullYear(),
+      agora.getMonth(),
+      0
+    ).getDate();
+    dias += ultimoDiaMesAnterior;
+    meses -= 1;
+  }
+
+  if (meses < 0) {
+    meses += 12;
+    anos -= 1;
+  }
 
   document.getElementById("anos").textContent = String(anos).padStart(2, "0");
   document.getElementById("meses").textContent = String(meses).padStart(2, "0");
