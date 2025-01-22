@@ -63,9 +63,6 @@ const dataInicial = new Date("2024-10-22T22:00:00"); // Data de início do relac
 
 function atualizarContador() {
   const agora = new Date();
-  
-  // Ajusta para o mesmo horário da data inicial
-  agora.setSeconds(0, 0);
 
   let anos = agora.getFullYear() - dataInicial.getFullYear();
   let meses = agora.getMonth() - dataInicial.getMonth();
