@@ -59,7 +59,7 @@ const restartAutoSlide = () => {
 updateCarousel();
 startAutoSlide();
 
-const dataInicial = new Date("2024-10-22T22:00:00"); // Data de início do relacionamento
+const dataInicial = new Date("2024-10-22T00:00:00"); // Data de início do relacionamento
 
 function atualizarContador() {
   const agora = new Date();
