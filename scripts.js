@@ -63,45 +63,35 @@ const dataInicial = new Date("2024-10-22T00:00:00"); // Data de início do relac
 
 function atualizarContador() {
   const agora = new Date();
+  let diffMs = agora - dataInicial; // Diferença em milissegundos
 
+  // Convertendo para uma nova data para calcular anos, meses e dias corretamente
+  let dataTemp = new Date(dataInicial);
+  
   let anos = agora.getFullYear() - dataInicial.getFullYear();
   let meses = agora.getMonth() - dataInicial.getMonth();
   let dias = agora.getDate() - dataInicial.getDate();
-  let horas = agora.getHours() - dataInicial.getHours();
-  let minutos = agora.getMinutes() - dataInicial.getMinutes();
-  let segundos = agora.getSeconds() - dataInicial.getSeconds();
 
-  // Ajusta os valores se houver "empréstimos" necessários
-  if (segundos < 0) {
-    segundos += 60;
-    minutos -= 1;
-  }
-
-  if (minutos < 0) {
-    minutos += 60;
-    horas -= 1;
-  }
-
-  if (horas < 0) {
-    horas += 24;
-    dias -= 1;
-  }
-
+  // Ajuste de dias se necessário
   if (dias < 0) {
-    const ultimoDiaMesAnterior = new Date(
-      agora.getFullYear(),
-      agora.getMonth(),
-      0
-    ).getDate();
-    dias += ultimoDiaMesAnterior;
+    dataTemp.setMonth(dataTemp.getMonth() + meses);
+    let ultimoDiaMes = new Date(dataTemp.getFullYear(), dataTemp.getMonth() + 1, 0).getDate();
+    dias += ultimoDiaMes;
     meses -= 1;
   }
 
+  // Ajuste de meses se necessário
   if (meses < 0) {
     meses += 12;
     anos -= 1;
   }
 
+  // Calcula o restante das horas, minutos e segundos com base na diferença total em milissegundos
+  let horas = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutos = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+  let segundos = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+  // Atualiza os elementos na página
   document.getElementById("anos").textContent = String(anos).padStart(2, "0");
   document.getElementById("meses").textContent = String(meses).padStart(2, "0");
   document.getElementById("dias").textContent = String(dias).padStart(2, "0");
